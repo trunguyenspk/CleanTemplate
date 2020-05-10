@@ -1,0 +1,845 @@
+﻿@{
+    ViewData["Title"] = "Submit Form";
+}
+
+@{
+    var currUserRoles = User.FindAll("roles").Select(r => r.Value);
+    var adminRoleName = "AdminTeam";
+    var isAdmin = currUserRoles.Contains(adminRoleName);
+}
+
+
+@*<link href="./css/form/styles.css" rel="stylesheet" type="text/css">*@
+<link href="./css/form/form.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.219/styles/kendo.default-v2.min.css" />
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://kendo.cdn.telerik.com/2020.1.219/js/kendo.web.min.js" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+
+<script src="~/js/common/load-signature.js"></script>
+<script src="~/js/common/app-common.js"></script>
+<script src="~/js/form/app-form.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".jq-date-picker").datepicker({
+            dateFormat: "dd/mm/yy"
+        });
+    });
+</script>
+
+<div id="content">
+    <div id="main-wrapper" class="project-page project-form-page project-form-form-page project-form-form-view-page">
+        <div class="project-container">
+            <div class="project-main">
+                <div class="project-content">
+                    <div class="project-section-content">
+                        <div class="form-content">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="comvitaForm">
+                                        <form>
+                                            <div id="form-group-panel4" class="form-group form-field-type-panel">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <div class="container container-custom">
+                                                            <div class="row">
+                                                                <div class="col-md">
+                                                                    <div id="form-group-panel3ColumnsContent" class="form-group form-field-type-htmlelement">
+                                                                        <img src="./img/logo.png" alt="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md">
+                                                                    <p>Batch Packing Record</p>
+                                                                </div>
+                                                                <div class="col-md">
+                                                                    <div data-type="form-field" for="workOrderNumber" class="form-group form-field-type-textfield">
+                                                                        <label data-type="label" class="control-label" for="workOrderNumber">Work Order </label>
+                                                                        <div class="input-group">
+                                                                            <input class="form-control" spellcheck="true" type="text" placeholder="" data-obj="eBatchSheet" data-type="input-text" data-prop="workOrderNumber" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md">
+
+                                                                </div>
+                                                                <div class="col-md">
+                                                                    <div data-type="form-field" for="workOrderPartDesciption" class="form-group form-field-type-textarea">
+                                                                        <div class="input-group">
+                                                                            <textarea class="form-control" spellcheck="true" rows="3" placeholder="" data-obj="eBatchSheet" data-type="textarea" data-prop="workOrderPartDesciption"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md">
+                                                                    <div class="form-group form-field-type-htmlelement">
+                                                                        <div data-type="form-field">
+                                                                            <p>Version <label data-obj="eBatchSheet" data-type="text" data-prop="ebatchVersion"></label></p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-field-type-htmlelement">
+                                                                        <div data-type="form-field">
+                                                                            <p>Issued on <label data-obj="eBatchSheet" data-type="text-date" data-prop="issuedDate"></label></p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group form-field-type-htmlelement">
+                                                                        <div data-type="form-field">
+                                                                            <p>Issued by <label data-obj="eBatchSheet" data-type="text" data-prop="issuedBy"></label></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="form-group-panel9" class="form-group form-field-type-panel">
+                                                <div id="formio-panel-panel9" class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <div data-type="form-field" for="workOrderId" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="workOrderId" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Allocated BATCH and ID No <em class="glyphicon glyphicon-question-sign text-muted"></em> </label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <input class="form-control" spellcheck="true" type="text" placeholder="" data-obj="eBatchSheet" data-type="input-text" data-prop="workOrderId" />
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="manufacturingDate" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="manufacturingDate" style="float: left; width: 30%; margin-right: 3%; text-align: left;">MFG Date</label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <input class="form-control" spellcheck="true" type="text" placeholder="" data-obj="eBatchSheet" data-type="input-text-date" data-prop="manufacturingDate" disabled />
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="manufacturingComment" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="manufacturingComment" style="float: left; width: 30%; margin-right: 3%; text-align: left;"></label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <textarea class="form-control" spellcheck="true" rows="3" placeholder="(Date of bulk manufacture) *MFG date must be no longer than four months" data-obj="eBatchSheet" data-type="textarea" data-prop="manufacturingComment"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel9Columns" class="form-group form-field-type-columns">
+                                                            <div class="row">
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0"></div>
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0"></div>
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div data-type="form-field" for="panel9Signature" class="form-group form-field-type-signature">
+                                                                        <div class="input-group">
+                                                                            <canvas name="panel9Signature" class="canvas-sign form-control" data-obj="eBatchSheet" data-type="signature" data-prop="panel9Signature" style="width: 100%; height: 150px; background-color: #f5f5eb;"></canvas>
+                                                                            <div style="text-align: center; color: #c3c3c3;">Calculation Checked By  </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="expiryDate" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="expiryDate" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Expiry Date </label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <input class="form-control" spellcheck="true" type="text" placeholder="" data-obj="eBatchSheet" data-type="input-text-date" data-prop="expiryDate" disabled />
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="bestBeforeComment" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="bestBeforeComment" style="float: left; width: 30%; margin-right: 3%; text-align: left;"></label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <textarea class="form-control" spellcheck="true" rows="3" placeholder="" data-obj="eBatchSheet" data-type="textarea" data-prop="bestBeforeComment"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel9Columns2" class="form-group form-field-type-columns">
+                                                            <div class="row">
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0"></div>
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0"></div>
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div data-type="form-field" for="panel9Signature2" class="form-group form-field-type-signature">
+                                                                        <div class="input-group">
+                                                                            <canvas name="panel9Signature2" class="canvas-sign form-control" data-obj="eBatchSheet" data-type="signature" data-prop="panel9Signature2" style="width: 100%; height: 150px; background-color: #f5f5eb;"></canvas>
+                                                                            <div style="text-align: center; color: #c3c3c3;">Calculation Checked By </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="endDateComment" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="endDateComment" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Expiry Calculation from MFG Date </label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <textarea class="form-control" spellcheck="true" rows="3" placeholder="" data-obj="eBatchSheet" data-type="textarea" data-prop="endDateComment"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="packageDate" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="packageDate" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Date of packing at Comvita </label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <input class="form-control" spellcheck="true" type="text" placeholder="" data-obj="eBatchSheet" data-type="input-text" data-prop="packDate" disabled />
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="quantityRequired" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="quantityRequired" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Quantity required </label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <input class="form-control" spellcheck="true" type="text" placeholder="Quantity required" data-obj="eBatchSheet" data-type="input-text" data-prop="quantityRequired" />
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="packageSize" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="packageSize" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Pack size </label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <input class="form-control" spellcheck="true" type="text" placeholder="Pack size" data-obj="eBatchSheet" data-type="input-text" data-prop="packageSize" />
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="qcSample" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="qcSample" style="float: left; width: 30%; margin-right: 3%; text-align: left;">QC Samples required </label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <input class="form-control" spellcheck="true" type="text" placeholder="QC Samples required" data-obj="eBatchSheet" data-type="input-text" data-prop="qcSample" />
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="batchStartDate" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="batchStartDate" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Batch Start Date </label>
+                                                            <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                <input id="" class="form-control jq-date-picker" spellcheck="true" type="text" placeholder="" data-obj="eBatchSheet" data-type="input-text-date" data-prop="batchStartDate" diabled />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="form-group-panel2" class="form-group form-field-type-panel">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <div id="form-group-gridBulkItem" data-type="form-field" for="gridBulkItem" class="form-group form-field-type-datagrid">
+                                                            <label id="gridBulkItemLabel" class="control-label" for="gridBulkItem">Data Grid </label>
+                                                            <div class="input-group">
+                                                                <props data-prop="gridBulkItem">
+                                                                    <prop field="gridBulkPartNo" type="text" title="PART No."></prop>
+                                                                    <prop field="gridBulkDescription" type="multitext" title="BULK"></prop>
+                                                                    @*<prop field="" type="text" title="QA No"></prop>*@
+                                                                    <prop field="gridBulkItemSignature" type="signature" title="Signature" footer="Sign Recorded By **"></prop>
+                                                                    @*<prop field="" type="signature" title="Signature" footer="QA No and Part No Checked By*"></prop>*@
+                                                                    <prop field="gridBulkFinishedQuantityPacked" type="text" title="Finished Quantity packed (kg)"></prop>
+                                                                    <prop field="gridBulkReturns" type="radio" title="RETURNS">
+                                                                        <prop-option value="yes" title="Yes"></prop-option>
+                                                                        <prop-option value="no" title="No"></prop-option>
+                                                                    </prop>
+                                                                    <prop field="gridBulkDelete" type="removeControl" title=""></prop>
+                                                                </props>
+                                                                <table class="table datagrid-table table-striped table-bordered" data-obj="eBatchSheet" data-type="grid" data-prop="gridBulkItem">
+                                                                </table>
+                                                                <div class="datagrid-add" style="margin-top: 10px;">
+                                                                    <button id="addanother-custom-btn" class="btn btn-dark btn-md" name="addanother-custom-btn" data-prop="gridBulkItem" onclick="Logixtek.Form.AddNewGridRow(this);">
+                                                                        Add Another
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel2Content" class="form-group form-field-type-htmlelement">
+                                                            <p>* Check Part Number, QA number and Expiry Date</p>
+                                                        </div>
+                                                        <div id="form-group-panel2Content2" class="form-group form-field-type-htmlelement">
+                                                            <p>**All Part no’s to be checked are correct before going into production room, sign when checked</p>
+                                                        </div>
+                                                        <div id="form-group-gridPreprint" data-type="form-field" for="gridPrePrint" class="form-group form-field-type-datagrid">
+                                                            <div class="input-group">
+                                                                <props data-prop="gridPrePrint">
+                                                                    <prop field="gridPrePrintPartNo" type="text" title="PART No."></prop>
+                                                                    <prop field="gridPrePrintSignature" type="signature" title="Signature" footer="Sign Recorded By **"></prop>
+                                                                    <prop field="gridPrePrintDescription" type="multitext" title="PREPRINTED PACKAGING"></prop>
+                                                                    @*<prop field="" type="text" title="QA No"></prop>*@
+                                                                    @*<prop field="" type="signature" title="Signature" footer="QA No and Part No Checked By*"></prop>*@
+                                                                    <prop field="gridPrePrintQualityUsed" type="text" title="QUANTITY USED"></prop>
+                                                                    <prop field="gridPrePrintWaste" type="text" title="WASTE"></prop>
+                                                                    <prop field="gridPrePrintDelete" type="removeControl" title=""></prop>
+                                                                </props>
+                                                                <table class="table datagrid-table table-striped table-bordered" data-obj="eBatchSheet" data-type="grid" data-prop="gridPrePrint">
+                                                                </table>
+                                                                <div class="datagrid-add" style="margin-top: 10px;">
+                                                                    <button id="addanother-custom-btn"
+                                                                            class="btn btn-dark btn-md" name="addanother-custom-btn" data-prop="gridPrePrint" onclick="Logixtek.Form.AddNewGridRow(this);">
+                                                                        Add Another
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel2Content3" class="form-group form-field-type-htmlelement">
+                                                            <p>* Check Part Number, QA number and Expiry Date</p>
+                                                        </div>
+                                                        <div id="form-group-gridPackaging" data-type="form-field" for="gridPackaging" class="form-group form-field-type-datagrid">
+                                                            <div class="input-group">
+                                                                <props data-prop="gridPackaging">
+                                                                    <prop field="gridPackagingPartNo" type="text" title="PART No."></prop>
+                                                                    <prop field="gridPackagingDescription" type="multitext" title="PACKAGING MATERIALS"></prop>
+                                                                    <prop field="gridPackagingQANo" type="text" title="QA No"></prop>
+                                                                    <prop field="gridPackagingFinishedQuantity" type="text" title="FINISHED GOOD QTY"></prop>
+                                                                    <prop field="gridPackagingWasteSample" type="text" title="WASTE + SAMPLES"></prop>
+                                                                    <prop field="gridPackagingDelete" type="removeControl" title=""></prop>
+                                                                </props>
+                                                                <table class="table datagrid-table table-striped table-bordered" data-obj="eBatchSheet" data-type="grid" data-prop="gridPackaging">
+                                                                </table>
+                                                                <div class="datagrid-add" style="margin-top: 10px;">
+                                                                    <button id="addanother-custom-btn" class="btn btn-dark btn-md" 
+                                                                            name="addanother-custom-btn" data-prop="gridPackaging" onclick="Logixtek.Form.AddNewGridRow(this);">
+                                                                        Add Another
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="form-group-panel6" class="form-group form-field-type-panel">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <div id="form-group-panel6Panel" class="form-group form-field-type-panel">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-body">
+                                                                    <div id="form-group-grp100101desc" class="form-group form-field-type-textarea">
+                                                                        <div class="ng-scope">
+                                                                            <div class="input-group"><textarea id="grp100101desc" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required" tabindex="0" spellcheck="true" name="grp100101desc" rows="5" placeholder=""></textarea></div>
+                                                                            <div class="formio-errors">
+                                                                                <div class="ng-hide"> </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="form-group-dataGridGroupA" data-type="form-field" for="dataGridGroupA" class="form-group form-field-type-datagrid">
+                                                                        <div class="input-group">
+                                                                            <props data-prop="dataGridGroupA">
+                                                                                <prop field="leftComment" type="text" title="Process Steps"></prop>
+                                                                                <prop field="rightComment" type="text" title="Summary of Actions"></prop>
+                                                                                <prop field="dataGridGroupADelete" type="removeControl" title=""></prop>
+                                                                            </props>
+                                                                            <table class="table datagrid-table" data-obj="eBatchSheet" data-type="grid" data-prop="dataGridGroupA">
+                                                                            </table>
+                                                                            <div class="datagrid-add" style="margin-top: 10px;">
+                                                                                <button id="addanother-custom-btn" class="btn btn-dark btn-md" name="addanother-custom-btn" data-prop="dataGridGroupA" onclick="Logixtek.Form.AddNewGridRow(this);">
+                                                                                    Add Another
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-field-type-well">
+                                                            <div class="well">
+                                                                <div data-type="form-field" for="outerShipperLabel" class="form-group form-field-type-textfield borderblack">
+                                                                    <label data-type="label" class="control-label" for="outerShipperLabel" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Outer Shipper Label </label>
+                                                                    <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                        <textarea class="form-control" spellcheck="true" rows="3" placeholder="" data-obj="eBatchSheet" data-type="textarea" data-prop="outerShipperLabel"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div data-type="form-field" for="palletLabel" class="form-group form-field-type-textfield borderblack">
+                                                                    <label data-type="label" class="control-label" for="palletLabel" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Pallet Label </label>
+                                                                    <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                        <textarea class="form-control" spellcheck="true" rows="3" placeholder="" data-obj="eBatchSheet" data-type="textarea" data-prop="palletLabel"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div data-type="form-field" for="changeOfLabelNotice" class="form-group form-field-type-textfield borderblack">
+                                                                    <label data-type="label" class="control-label" for="changeOfLabelNotice" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Change of label notice </label>
+                                                                    <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                        <textarea class="form-control" spellcheck="true" rows="3" placeholder="" data-obj="eBatchSheet" data-type="textarea" data-prop="changeOfLabelNotice"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div data-type="form-field" for="palletInformation" class="form-group form-field-type-textfield borderblack">
+                                                                    <label data-type="label" class="control-label" for="palletInformation" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Pallet Information </label>
+                                                                    <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                        <textarea class="form-control" spellcheck="true" rows="3" placeholder="" data-obj="eBatchSheet" data-type="textarea" data-prop="palletInformation"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel6Columns" class="form-group form-field-type-columns formio-component-panel6Columns ">
+                                                            <div class="row ng-scope">
+                                                                <div class="col-sm-7 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-Group170Comment" class="form-group form-field-type-textfield formio-component-Group170Comment ">
+                                                                        <div class="ng-scope">
+                                                                            <div class="input-group"><input id="Group170Comment" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-valid-mask" tabindex="0" spellcheck="true" name="Group170Comment" type="text" placeholder="" /> </div>
+                                                                            <div class="formio-errors">
+                                                                                <div class="ng-hide"> </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-5 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-cleanCompletedSignature" class="form-group form-field-type-signature">
+                                                                        <div data-type="form-field" for="cleanCompletedSignature" class="form-group form-field-type-signature">
+                                                                            <div class="input-group">
+                                                                                <canvas name="cleanCompletedSignature" class="canvas-sign form-control" data-obj="eBatchSheet" data-type="signature" data-prop="cleanCompletedSignature" style="width: 100%; height: 150px; background-color: #f5f5eb;"></canvas>
+                                                                                <div style="text-align: center; color: #c3c3c3;">Clean completed signature  </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-grp161desc" class="form-group form-field-type-textarea formio-component-grp161desc ">
+                                                            <div class="ng-scope">
+                                                                <div class="input-group"><textarea id="grp161desc" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" tabindex="0" spellcheck="true" name="grp161desc" rows="5" placeholder=""></textarea> </div>
+                                                                <div class="formio-errors">
+                                                                    <div class="ng-hide"> </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="form-group-panel8" class="form-group form-field-type-panel">
+                                                <div id="formio-panel-panel8" class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">Number of Units at End of the Run: </h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div id="form-group-panel8Columns" class="form-group form-field-type-columns">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-panel8ColumnsFinishedGoodsUnits" class="form-group form-field-type-htmlelement">
+                                                                        <p class="text-center"><strong>Finished Goods Units</strong></p>
+                                                                    </div>
+                                                                    <div data-type="form-field" for="finishedGoodUnit_NumberOfUnits" class="form-group form-field-type-number">
+                                                                        <label data-type="label" class="control-label" for="finishedGoodUnit_NumberOfUnits" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Number of Units </label>
+                                                                        <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                            <input class="form-control" spellcheck="true" type="number" placeholder="" data-obj="eBatchSheet" data-type="input-number" data-prop="finishedGoodUnit_NumberOfUnits" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div data-type="form-field" for="finishedGoodUnit_NumberOfUnitsInPart" class="form-group form-field-type-number">
+                                                                        <label data-type="label" class="control-label" for="finishedGoodUnit_NumberOfUnitsInPart" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Number of Units in Part Shipper </label>
+                                                                        <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                            <input class="form-control" spellcheck="true" type="number" placeholder="" data-obj="eBatchSheet" data-type="input-number" data-prop="finishedGoodUnit_NumberOfUnitsInPart" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div data-type="form-field" for="finishedGoodUnit_TotalNumberOfUnits" class="form-group form-field-type-number">
+                                                                        <label data-type="label" class="control-label" for="finishedGoodUnit_TotalNumberOfUnits" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Total Number of Units </label>
+                                                                        <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                            <input class="form-control" spellcheck="true" type="number" placeholder="" data-obj="eBatchSheet" data-type="input-number" data-prop="finishedGoodUnit_TotalNumberOfUnits" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-panel8ColumnsSecondsUkOnly" class="form-group form-field-type-htmlelement">
+                                                                        <p class="text-center"><strong>Seconds (UK Only)</strong></p>
+                                                                    </div>
+                                                                    <div data-type="form-field" for="secondUKOnly_NumberOfUnits" class="form-group form-field-type-number">
+                                                                        <label data-type="label" class="control-label" for="secondUKOnly_NumberOfUnits" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Number of Units </label>
+                                                                        <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                            <input class="form-control" spellcheck="true" type="number" placeholder="" data-obj="eBatchSheet" data-type="input-number" data-prop="secondUKOnly_NumberOfUnits" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div data-type="form-field" for="secondUKOnly_NumberOfUnitsInPart" class="form-group form-field-type-number">
+                                                                        <label data-type="label" class="control-label" for="secondUKOnly_NumberOfUnitsInPart" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Number of Units in Part Shipper </label>
+                                                                        <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                            <input class="form-control" spellcheck="true" type="number" placeholder="" data-obj="eBatchSheet" data-type="input-number" data-prop="secondUKOnly_NumberOfUnitsInPart" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div data-type="form-field" for="secondUKOnly_TotalNumberOfUnits" class="form-group form-field-type-number">
+                                                                        <label data-type="label" class="control-label" for="secondUKOnly_TotalNumberOfUnits" style="float: left; width: 30%; margin-right: 3%; text-align: left;">Total Number of Units </label>
+                                                                        <div class="input-group" style="width: 67%; margin-left: 33%;">
+                                                                            <input class="form-control" spellcheck="true" type="number" placeholder="" data-obj="eBatchSheet" data-type="input-number" data-prop="secondUKOnly_TotalNumberOfUnits" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="form-group-panel5" class="form-group form-field-type-panel">
+                                                <div id="formio-panel-panel5" class="panel panel-default">
+                                                    <div class="panel-heading ng-scope">
+                                                        <h3 class="panel-title ng-binding">Reconciliation {% yield = (A) / (U) x 100} </h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div id="form-group-panel5Table" class="form-group form-field-type-table formio-component-panel5Table ">
+                                                            <div id="formio-table-panel5Table" class="table-responsive ng-scope">
+                                                                <table class="table">
+                                                                    <tbody>
+                                                                        <tr class="ng-scope">
+                                                                            <td class="ng-scope"></td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-finishedunits" class="form-group form-field-type-htmlelement formio-component-finishedunits ">
+                                                                                    <div id="formio-htmlelement-finishedunits">
+                                                                                        <div class="ng-binding">
+                                                                                            <p>FINISHED UNITS</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-rejectwaste2" class="form-group form-field-type-htmlelement formio-component-rejectwaste2 ">
+                                                                                    <div id="formio-htmlelement-rejectwaste2">
+                                                                                        <div class="ng-binding">
+                                                                                            <p>REJECT/ WASTE</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-samples" class="form-group form-field-type-htmlelement formio-component-samples ">
+                                                                                    <div id="formio-htmlelement-samples">
+                                                                                        <div class="ng-binding">
+                                                                                            <p>SAMPLES</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-actuala" class="form-group form-field-type-htmlelement formio-component-actuala ">
+                                                                                    <div id="formio-htmlelement-actuala">
+                                                                                        <div class="ng-binding">
+                                                                                            <p>ACTUAL (A)</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-issuedminusreturnedu" class="form-group form-field-type-htmlelement formio-component-issuedminusreturnedu ">
+                                                                                    <div id="formio-htmlelement-issuedminusreturnedu">
+                                                                                        <div class="ng-binding">
+                                                                                            <p>ISSUED MINUS RETURNED (U)</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-yield" class="form-group form-field-type-htmlelement formio-component-yield ">
+                                                                                    <div id="formio-htmlelement-yield">
+                                                                                        <div class="ng-binding">
+                                                                                            <p>% Yield</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="ng-scope">
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-amountofbulk" class="form-group form-field-type-htmlelement formio-component-amountofbulk ">
+                                                                                    <div id="formio-htmlelement-amountofbulk">
+                                                                                        <div class="ng-binding">
+                                                                                            <p>AMOUNT of BULK</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-aobFinishedUnit" class="form-group form-field-type-number formio-component-aobFinishedUnit ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group">
+                                                                                            <input id="aobFinishedUnit" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-min ng-valid-max ng-valid-mask" tabindex="0" name="aobFinishedUnit" type="text" placeholder="" />
+                                                                                        </div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-rejectwaste" class="form-group form-field-type-number formio-component-rejectwaste ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="rejectwaste" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-min ng-valid-max ng-valid-mask" tabindex="0" name="rejectwaste" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-aobrejectwaste" class="form-group form-field-type-number formio-component-aobrejectwaste ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="aobrejectwaste" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-min ng-valid-max ng-valid-mask" tabindex="0" name="aobrejectwaste" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-aboSample" class="form-group form-field-type-number formio-component-aboSample ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="aboSample" class="form-control ng-pristine ng-untouched ng-valid" tabindex="0" name="aboSample" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-aobissuedminusReturned" class="form-group form-field-type-number formio-component-aobissuedminusReturned ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="aobissuedminusReturned" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-min ng-valid-max ng-valid-mask" tabindex="0" name="aobissuedminusReturned" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-aobYield" class="form-group form-field-type-number formio-component-aobYield ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="aobYield" class="form-control ng-pristine ng-untouched ng-valid" tabindex="0" name="aobYield" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="ng-scope">
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-numberoflabels" class="form-group form-field-type-htmlelement formio-component-numberoflabels ">
+                                                                                    <div id="formio-htmlelement-numberoflabels">
+                                                                                        <div class="ng-binding">
+                                                                                            <p>NUMBER of LABELS</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-nolUnitFinished" class="form-group form-field-type-number formio-component-nolUnitFinished ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="nolUnitFinished" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-min ng-valid-max ng-valid-mask" tabindex="0" name="nolUnitFinished" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-nolrejectwaste" class="form-group form-field-type-number formio-component-nolrejectwaste ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="nolrejectwaste" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-min ng-valid-max ng-valid-mask" tabindex="0" name="nolrejectwaste" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-nolsamples" class="form-group form-field-type-number formio-component-nolsamples ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="nolsamples" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-min ng-valid-max ng-valid-mask" tabindex="0" name="nolsamples" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-nolactuals" class="form-group form-field-type-number formio-component-nolactuals ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="nolactuals" class="form-control ng-pristine ng-untouched ng-valid" tabindex="0" name="nolactuals" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-nolIssuedMinusReturned" class="form-group form-field-type-number formio-component-nolIssuedMinusReturned ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="nolIssuedMinusReturned" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-min ng-valid-max ng-valid-mask" tabindex="0" name="nolIssuedMinusReturned" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="ng-scope">
+                                                                                <div id="form-group-nolYield" class="form-group form-field-type-number formio-component-nolYield ">
+                                                                                    <div class="ng-scope">
+                                                                                        <div class="input-group"><input id="nolYield" class="form-control ng-pristine ng-untouched ng-valid" tabindex="0" name="nolYield" type="text" placeholder="" /></div>
+                                                                                        <div class="formio-errors">
+                                                                                            <div class="ng-hide"> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel5Columns3" class="form-group form-field-type-columns ">
+                                                            <div class="row">
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0"></div>
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0"></div>
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div data-type="form-field" for="reconciliationCompletedbySignature" class="form-group form-field-type-signature">
+                                                                        <div class="input-group">
+                                                                            <canvas name="reconciliationCompletedbySignature" class="canvas-sign form-control" data-obj="eBatchSheet" data-type="signature" data-prop="reconciliationCompletedbySignature" style="width: 100%; height: 150px; background-color: #f5f5eb;"></canvas>
+                                                                            <div style="text-align: center; color: #c3c3c3;">Reconciliation Completed by </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel5Columns" class="form-group form-field-type-columns formio-component-panel5Columns ">
+                                                            <div class="row ng-scope">
+                                                                <div class="col-sm-3 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-panel5ColumnsLimits" class="form-group form-field-type-htmlelement formio-component-panel5ColumnsLimits ">
+                                                                        <div id="formio-htmlelement-panel5ColumnsLimits">
+                                                                            <div class="ng-binding">
+                                                                                <p>LIMITS</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-7 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-panel5ColumnsBulk" class="form-group form-field-type-htmlelement formio-component-panel5ColumnsBulk ">
+                                                                        <div id="formio-htmlelement-panel5ColumnsBulk">
+                                                                            <div class="ng-binding">
+                                                                                <p>BULK : 97.0 TO 103.0 %</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="form-group-labels" class="form-group form-field-type-htmlelement formio-component-labels ">
+                                                                        <div id="formio-htmlelement-labels">
+                                                                            <div class="ng-binding">
+                                                                                <p>LABELS : 98.0 TO 102.0 %</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="form-group-panel5ColumnsBoxes" class="form-group form-field-type-htmlelement formio-component-panel5ColumnsBoxes ">
+                                                                        <div id="formio-htmlelement-panel5ColumnsBoxes">
+                                                                            <div class="ng-binding">
+                                                                                <p>BOXES: 96.0 TO 104.0%</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel5Columns2" class="form-group form-field-type-columns formio-component-panel5Columns2 ">
+                                                            <div class="row ng-scope">
+                                                                <div class="col-sm-3 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-panel5Columns2AuthorisationforreleasetoQcop12" class="form-group form-field-type-htmlelement formio-component-panel5Columns2AuthorisationforreleasetoQcop12 ">
+                                                                        <div id="formio-htmlelement-panel5Columns2AuthorisationforreleasetoQcop12">
+                                                                            <div class="ng-binding">
+                                                                                <p>Authorisation for release to QC (OP12):</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-roomCoordinator" class="form-group form-field-type-htmlelement formio-component-roomCoordinator ">
+                                                                        <div id="formio-htmlelement-roomCoordinator">
+                                                                            <div class="ng-binding">
+                                                                                <p>Room Coordinator:</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="form-group-roomCoordinatorSignature" class="form-group form-field-type-signature">
+                                                                        <div data-type="form-field" for="roomCoordinatorSignature" class="form-group form-field-type-signature">
+                                                                            <div class="input-group">
+                                                                                <canvas name="roomCoordinatorSignature" class="canvas-sign form-control" data-obj="eBatchSheet" data-type="signature" data-prop="roomCoordinatorSignature" style="width: 100%; height: 150px; background-color: #f5f5eb;"></canvas>
+                                                                                <div style="text-align: center; color: #c3c3c3;">Room Coordinator </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-GmpReconciliator" class="form-group form-field-type-htmlelement">
+                                                                        <p>GMP Reconciliator:</p>
+                                                                    </div>
+                                                                    <div id="form-group-gmpReconciliatorSignature" class="form-group form-field-type-signature">
+                                                                        <div data-type="form-field" for="gmpReconciliatorSignature" class="form-group form-field-type-signature">
+                                                                            <div class="input-group">
+                                                                                <canvas name="gmpReconciliatorSignature" class="canvas-sign form-control" data-obj="eBatchSheet" data-type="signature" data-prop="gmpReconciliatorSignature" style="width: 100%; height: 150px; background-color: #f5f5eb;"></canvas>
+                                                                                <div style="text-align: center; color: #c3c3c3;">GMP Reconciliator </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-type="form-field" for="reconciliationComment" class="form-group form-field-type-textfield borderblack">
+                                                            <label data-type="label" class="control-label" for="reconciliationComment">Comments </label>
+                                                            <div class="input-group">
+                                                                <textarea class="form-control" spellcheck="true" rows="3" placeholder="" data-obj="eBatchSheet" data-type="textarea" data-prop="reconciliationComment"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-group-panel5Columns4" class="form-group form-field-type-columns">
+                                                            <div class="row">
+                                                                <div class="col-sm-4 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                                    <div id="form-group-commentsSignOff" class="form-group form-field-type-signature">
+                                                                        <div data-type="form-field" for="commentsSignOff" class="form-group form-field-type-signature">
+                                                                            <div class="input-group">
+                                                                                <canvas name="commentsSignOff" class="canvas-sign form-control" data-obj="eBatchSheet" data-type="signature" data-prop="commentsSignOff" style="width: 100%; height: 150px; background-color: #f5f5eb;"></canvas>
+                                                                                <div style="text-align: center; color: #c3c3c3;">Comments Sign Off </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8 col-sm-offset-0 col-sm-push-0 col-sm-pull-0"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="form-group-columns2" class="form-group form-field-type-columns">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-sm-offset-0 col-sm-push-0 col-sm-pull-0"></div>
+                                                    <div class="col-sm-6 col-sm-offset-0 col-sm-push-0 col-sm-pull-0">
+                                                        <div id="form-group-columns2Table" class="form-group form-field-type-table">
+                                                            <div id="formio-table-columns2Table" class="table-responsive">
+                                                                <table class="table">
+                                                                    <tbody>
+                                                                        @*<tr>
+                                                                                <td>
+                                                                                    <div data-type="form-field" for="nextState" class="form-group form-field-type-textfield">
+                                                                                        <label data-type="label" class="control-label" for="nextState">Next State </label>
+                                                                                        <div class="input-group">
+                                                                                            <input class="form-control" spellcheck="true" type="text" placeholder="" data-obj="eBatchSheet" data-type="input-obj-text" data-prop="nextState" data-propshow="value" disabled/>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>*@
+                                                                        <tr>
+                                                                            <td>
+                                                                                <label data-type="label" class="control-label" for="currentState">Current State </label>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div data-type="form-field" for="currentState" class="form-group form-field-type-textfield">
+                                                                                    @*<label data-type="label" class="control-label" for="currentState">Current State </label>*@
+                                                                                    <div class="input-group">
+                                                                                        @if (isAdmin)
+                                                                                        {
+                                                                                            <input id="select-current-state" class="form-control" spellcheck="true" type="text" placeholder="" />
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <input class="form-control" spellcheck="true" type="text" placeholder="" data-obj="eBatchSheet" data-type="input-obj-text" data-prop="currentState" data-propshow="value" disabled />
+                                                                                        }
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div id="form-group-columns2Save" class="form-group form-field-type-button formio-component-columns2Save "><button id="columns2Save" class="btn btn-dark btn-md" tabindex="0" name="columns2Save" onclick="Logixtek.Form.Save();"> Save </button> </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                @if (!isAdmin)
+                                                                                {
+                                                                                    <div id="form-group-saveandsend-custom-btn" class="form-group form-field-type-button pull-left"><button id="saveandsend-custom-btn" class="btn btn-dark btn-md" tabindex="0" name="saveandsend-custom-btn" onclick="Logixtek.Form.SaveAndSend();"> Save and Send </button> </div>
+                                                                                }
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="form-group-InstanceId" class="form-group form-field-type-textfield formio-component-InstanceId ng-hide">
+                                                <div class="ng-scope">
+                                                    <div class="input-group"><input id="InstanceId" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-valid-mask" tabindex="0" spellcheck="true" name="InstanceId" type="password" placeholder="" /></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

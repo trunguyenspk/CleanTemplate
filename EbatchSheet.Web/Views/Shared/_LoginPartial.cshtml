@@ -1,0 +1,21 @@
+@using System.Security.Principal
+
+<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+    <ul class="navbar-nav flex-grow-1" style="float: right;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" onclick="return false;">Hello @User.Claims.FirstOrDefault(x => x.Type == "email")?.Value!</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="AzureAD" asp-controller="Account" asp-action="SignOut">Sign out</a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="AzureAD" asp-controller="Account" asp-action="SignIn">Sign in</a>
+            </li>
+        }
+    </ul>
+</div>
